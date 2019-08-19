@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>aspnet-Marketplace-5755B6C3-0097-447B-B83C-EE696F370881</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
