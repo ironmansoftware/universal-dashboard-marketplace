@@ -1,0 +1,88 @@
+﻿@model Marketplace.Data.ModuleInfo
+
+@{
+    ViewData["Title"] = Model.NuGetId;
+}
+
+<div class="row z-depth-1" style="background-color: rgba(181, 181, 181, 0.44)">
+    <div class="col s12 m1 offset-m1">
+        @if (string.IsNullOrEmpty(Model.IconUrl))
+        {
+            <i class="material-icons large" style="color:rgba(128, 128, 128, 0.63); height:128px;width:128px;margin-top:50px">dashboard</i>
+        }
+        else
+        {
+            <img src="@Model.IconUrl" style="height:128px;width:128px;margin-top:50px"/>
+        }
+    </div>
+    <div class="col s12 m7" style="padding-left: 50px">
+        <div class="row">
+            <h4>@Model.Title</h4>
+        </div>
+        <div class="row">
+            @Model.Description
+        </div>
+        <div class="row valign-wrapper">
+            <div class="col s3" style="margin-left:0">
+                <h5>@Model.Authors</h5>
+            </div>
+            <div class="col s4" style="margin-left:0">
+                <i class="material-icons">save_alt</i>  @Model.DownloadCount downloads
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" >
+    <div class="col s12 m8 offset-m1">
+        <div class="row">
+            @Html.Raw(Model.Readme)
+        </div>
+    </div>
+    <div class="col s12 m3 card info-card">
+        <div class="card-content">
+            <div class="row">
+                <div class="col s12">
+                    <span style="color: rgba(0,0,0,.5)">Install</span><p></p>
+                    <pre style="background-color: rgba(128, 128, 128, 0.35); padding: 10px">Install-Module @Model.NuGetId</pre>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <span style="color: rgba(0,0,0,.5)">Version</span>
+                    <p>@Model.Version</p>
+                </div>
+                <div class="col s6">
+                    <span style="color: rgba(0,0,0,.5)">Last Updated</span>
+                    <p>@Model.Published</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <span style="color: rgba(0,0,0,.5)">Tags</span>
+                    <p>@Model.Tags</p>
+                </div>
+                <div class="col s6">
+                    <span style="color: rgba(0,0,0,.5)">Author</span>
+                    <p>@Model.Authors</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                   
+                </div>
+                <div class="col s6">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="card-action">
+            <a href="@Model.ProjectUrl" style="color: #0039bf">Project Page</a>
+            @if (!string.IsNullOrEmpty(Model.LicenseUrl))
+            {
+                <a href="@Model.LicenseUrl" style="color: #0039bf">License</a>
+            }
+
+        </div>
+    </div>
+</div>

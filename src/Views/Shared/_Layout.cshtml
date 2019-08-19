@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Dashboard Marketplace - @ViewData["Title"]</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+    <link rel="icon" href="~/images/navbar-logo.png">
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <nav>
+        <div class="nav-bar nav-wrapper heading">
+            <img src="~/images/navbar-logo.png" />
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="hide-on-med-and-down"><span>Universal Dashboard Marketplace</span></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="https://docs.universaldashboard.io" class="valign-wrapper">Docs</a></li>
+                <li><a href="https://github.com/ironmansoftware/universal-dashboard" class="valign-wrapper">GitHub</a></li>
+                <li><a href="/about" class="valign-wrapper">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li><a href="https://docs.universaldashboard.io">Docs</a></li>
+        <li><a href="https://github.com/ironmansoftware/universal-dashboard">GitHub</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+
+
+    <partial name="_CookieConsentPartial" />
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="page-footer nav-bar">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 Ironman Software, LLC
+                @*<a class="grey-text text-lighten-4 right" href="#!">More Links</a>*@
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+    <environment include="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+    @{
+        var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+        var canTrack = consentFeature?.CanTrack == true;
+    }
+
+    @if (canTrack)
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8902901-11"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-8902901-11');
+        </script>
+    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col s12">
+            <h3>About the Universal Dashboard Marketplace</h3>
+
+            <div class="row">
+                <div class="col s12 m9">
+                    <p>The Universal Dashboard Marketplace is a tool for finding dashboards that have already been developed and are available on the <a href="https://www.powershellgallery.com">PowerShell Gallery</a>. </p>
+
+                    <p>You can search for dashboards based on title, description, README.md, tags and author. Top and new dashboards appear on the home page. Dashboards are synchronized every 60 minutes from the PowerShell Gallery.</p>
+                </div>
+                <div class="col s12 m3">
+                    <div class="card-panel" style="color:rgba(0, 0, 0, 0.43)"><a href="https://www.poshud.com">PowerShell Universal Dashboard</a> is a PowerShell module used to develop websites, dashboards and REST APIs.</div>
+                </div>
+            </div>
+
+            
+
+            <h3>Submitting a Dashboard</h3>
+
+            <p>If you have a dashboard you'd like to submit, all you need to do is <a href="https://docs.microsoft.com/en-us/powershell/gallery/overview">publish your dashboard as a module to the PowerShell Gallery</a>. You'll need to include the ud-dashboard tag for the dashboard to be discovered by the Universal Dashboard Marketplace. All the information about your dashboard, like author and description, will be pulled from your dashboard module manifest.</p>
+
+
+
+            <img src="~/images/module-info.png" class="z-depth-3 center-align" />
+
+            <p>To include a custom README.md file to display additional dashboard information, you have to make sure that your ProjectUrl property in your module manifest points to your public GitHub repository. The Universal Dashboard Marketplace will automatically download the markdown from GitHub and present it within the item's page for users to easily see. You can use the <a href="https://github.com/ironmansoftware/ud-bginfo">ud-bginfo</a> repository as an example.</p> Images stored within the GitHub page should be automatically displayed in the Marketplace.
+
+            <img src="~/images/readme.png" class="z-depth-3 center-align" />
+        </div>
+    </div>
+</div>

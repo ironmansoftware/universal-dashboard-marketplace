@@ -1,0 +1,96 @@
+﻿@model Marketplace.Models.HomeViewModel
+
+<div class="container">
+    
+    <div class="center-align">
+        <h3>Dashboards for PowerShell Universal Dashboard</h3>
+        <form asp-controller="Search" asp-action="Result" method="post" id="searchForm">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">search</i>
+                <input id="searchText" name="searchText" type="text">
+                <label for="searchText">Search</label>
+            </div>
+        </form>
+    </div>
+
+    <h5>Most Downloaded</h5>
+
+    <div class="row">
+        @foreach (var package in Model.MostDownloadedPackages)
+        {
+            <div class="col s12 m4">
+                <a href="/Dashboard/@package.NuGetId">
+                    <div class="card home-component-card hoverable">
+                        <div class="card-content">
+                            <span class="heavy">@package.Title</span>
+                            <div class="row">
+                                @if (string.IsNullOrEmpty(package.IconUrl))
+                                {
+                                    <i class="material-icons large" style="color:rgba(128, 128, 128, 0.63)">dashboard</i>
+                                }
+                                else
+                                {
+                                    <img src="@package.IconUrl" />
+                                }
+                            </div>
+                            <div class="row card-info valign-wrapper">
+                                <div class="col s4 offset-s2 left-align">
+                                    <span>@package.Authors</span><p />
+                                    <span>@package.Version</span><p />
+                                </div>
+                                <div class="col s4 right-align">
+                                    <div class="center-align">
+                                        <i class="material-icons">save_alt</i><p />
+                                        <span>@package.DownloadCount</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+
+    <h5>New</h5>
+
+    <div class="row">
+        @foreach (var package in Model.NewPackages)
+        {
+            <div class="col s12 m4">
+                <a href="/Dashboard/@package.NuGetId">
+                    <div class="card home-component-card hoverable">
+                        <div class="card-content">
+                            <span class="heavy">@package.Title</span>
+                            <div class="row">
+                                @if (string.IsNullOrEmpty(package.IconUrl))
+                                {
+                                    <i class="material-icons large" style="color:rgba(128, 128, 128, 0.63)">dashboard</i>   
+                                }
+                                else
+                                {
+                                    <img src="@package.IconUrl" />
+                                }
+                            </div>
+                            <div class="row card-info valign-wrapper">
+                                <div class="col s4 offset-s2 left-align">
+                                    <span>@package.Authors</span><p />
+                                    <span>@package.Version</span><p />
+                                </div>
+                                <div class="col s4 right-align">
+                                    <div class="center-align">
+                                        <i class="material-icons">save_alt</i><p />
+                                        <span>@package.DownloadCount</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</div>
+
