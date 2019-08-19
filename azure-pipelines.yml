@@ -15,5 +15,5 @@ variables:
 steps:
 - script: |
     cd ./src
-    dotnet build --configuration $(buildConfiguration)
+    dotnet publish --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
