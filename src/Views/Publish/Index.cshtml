@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewData["Title"] = "Publish";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col s12">
+            <h3>About the Universal Dashboard Marketplace</h3>
+
+            <div class="row">
+                <div class="col s12 m9">
+                    <p>The Universal Dashboard Marketplace is a tool for finding dashboards and controls that have already been developed and are available on the <a href="https://www.powershellgallery.com">PowerShell Gallery</a>. </p>
+
+                    <p>You can search for dashboards and controls based on title, description, README.md, tags and author. Top and new dashboards and controls appear on the home page. Modules are synchronized every 60 minutes from the PowerShell Gallery.</p>
+                </div>
+                <div class="col s12 m3">
+                    <div class="card-panel" style="color:rgba(0, 0, 0, 0.43)"><a href="https://ironmansoftware.com/powershell-universal-dashboard/">PowerShell Universal Dashboard</a> is a PowerShell module used to develop websites, dashboards and REST APIs.</div>
+                </div>
+            </div>
+
+            <h3>Submitting a Module</h3>
+
+            <p>If you have a dashboard or control you'd like to submit, all you need to do is <a href="https://docs.microsoft.com/en-us/powershell/gallery/overview">publish your dashboard as a module to the PowerShell Gallery</a>. You'll need to include the <pre style="display: inline">ud-dashboard</pre> tag for a dashboard to be discovered. You'll need to include the <pre style="display: inline">ud-control</pre> tag for a control to be discovered.  All the information about your dashboard, like author and description, will be pulled from your dashboard module manifest.</p>
+
+            <img src="~/images/module-info.png" class="z-depth-3 center-align" />
+
+            <p>To include a custom README.md file to display additional dashboard or control information, you have to make sure that your <pre style="display: inline">ProjectUrl</pre> property in your module manifest points to your public GitHub repository. The Universal Dashboard Marketplace will automatically download the markdown from GitHub and present it within the item's page for users to easily see. You can use the <a href="https://github.com/ironmansoftware/ud-bginfo">ud-bginfo</a> repository as an example.</p> Images stored within the GitHub page should be automatically displayed in the Marketplace.
+
+            <img src="~/images/readme.png" class="z-depth-3 center-align" style="margin-top:25px" />
+        </div>
+    </div>
+</div>

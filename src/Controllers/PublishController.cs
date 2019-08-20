@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Marketplace.Controllers
 {
-    public class AboutController : Controller
+    public class PublishController : Controller
     {
         public IActionResult Index()
         {

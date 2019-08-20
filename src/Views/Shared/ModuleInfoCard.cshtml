@@ -1,0 +1,45 @@
+﻿@model Marketplace.Data.ModuleInfo
+
+<a href="/Dashboard/@Model.NuGetId">
+    <div class="card home-component-card hoverable" style="height: 256px">
+        <div class="card-content">
+            <span class="heavy">@Model.Title</span>
+            <div class="row">
+                @if (string.IsNullOrEmpty(Model.IconUrl))
+                {
+                    <i class="material-icons large" style="color:rgba(128, 128, 128, 0.63); padding-top:17px">dashboard</i>
+                }
+                else
+                {
+                    <img src="@Model.IconUrl" />
+                }
+            </div>
+            <div class="row card-info valign-wrapper">
+                <div class="col s4 offset-s2 left-align">
+                    <span>@Model.Authors</span><p />
+                    <span>@Model.Version</span><p />
+                </div>
+                <div class="col s2 right-align">
+                    <div class="center-align">
+                        <i class="material-icons">save_alt</i><p />
+                        <span>@Model.DownloadCount</span>
+                    </div>
+                </div>
+                <div class="col s2 right-align">
+                    <div class="center-align">
+                        @if (Model.Type == Marketplace.Data.ItemType.Dashboard)
+                        {
+                            <i class="material-icons">bar_chart</i><p />
+                            <span>Dashboard</span>
+                        }
+                        else
+                        {
+                            <i class="material-icons">extension</i><p />
+                            <span>Control</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>

@@ -15,9 +15,25 @@ namespace Marketplace.Services
     {
         public async Task<IEnumerable<ModuleInfo>> GetUniversalDashboardPackages()
         {
+            var packages = await GetDashboards();
+            return packages.Concat(await GetControls());
+        }
+
+        public async Task<IEnumerable<ModuleInfo>> GetDashboards()
+        {
+            return await GetUniversalDashboardPackages("ud-dashboard", ItemType.Dashboard);
+        }
+
+        public async Task<IEnumerable<ModuleInfo>> GetControls()
+        {
+            return await GetUniversalDashboardPackages("ud-control", ItemType.Control);
+        }
+
+        public async Task<IEnumerable<ModuleInfo>> GetUniversalDashboardPackages(string tag, ItemType itemType)
+        {
             var logger = new Log();
             List<Lazy<INuGetResourceProvider>> providers = new List<Lazy<INuGetResourceProvider>>();
-            providers.AddRange(Repository.Provider.GetCoreV3());  // Add v3 API support
+             providers.AddRange(Repository.Provider.GetCoreV3());  // Add v3 API support
             //providers.AddRange(Repository.Provider.GetCoreV2());  // Add v2 API support
             PackageSource packageSource = new PackageSource("https://www.powershellgallery.com/api/v2/");
             SourceRepository sourceRepository = new SourceRepository(packageSource, providers);
@@ -30,7 +46,7 @@ namespace Marketplace.Services
             List<ModuleInfo> packageInfos = new List<ModuleInfo>();
             do
             {
-                searchMetadata = await searchResource.SearchAsync("ud-dashboard", filter, skip, 10, logger, CancellationToken.None);
+                searchMetadata = await searchResource.SearchAsync(tag, filter, skip, 10, logger, CancellationToken.None);
 
                 if (!searchMetadata.Any()) break;
 
@@ -52,7 +68,8 @@ namespace Marketplace.Services
                         IconUrl = metadata.IconUrl?.ToString(),
                         DownloadCount = metadata.DownloadCount,
                         Description = metadata.Description,
-                        Authors = metadata.Authors
+                        Authors = metadata.Authors,
+                        Type = itemType
                     };
 
                     packageInfos.Add(packageInfo);

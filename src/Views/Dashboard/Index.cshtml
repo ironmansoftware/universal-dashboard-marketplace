@@ -69,7 +69,16 @@
             </div>
             <div class="row">
                 <div class="col s6">
-                   
+                    <span style="color: rgba(0,0,0,.5)">Type</span>
+                    @if (Model.Type == Marketplace.Data.ItemType.Dashboard)
+                    {
+                        <p><i class="material-icons">dashboard</i> Dashboard</p>
+                    }
+                    else
+                    {
+                        <p><i class="material-icons">extension</i> Control</p>
+                    }
+
                 </div>
                 <div class="col s6">
                    

@@ -22,5 +22,6 @@ namespace Marketplace.Data
         public string Description { get; set;  }
         public string Authors { get; set;  }
         public string Readme { get; set; }
+        public ItemType Type { get; set; }
     }
 }

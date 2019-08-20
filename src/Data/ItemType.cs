@@ -3,6 +3,6 @@
     public enum ItemType
     {
         Dashboard,
-        Controls
+        Control
     }
 }

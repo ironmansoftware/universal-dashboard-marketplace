@@ -3,7 +3,8 @@
 <div class="container">
     
     <div class="center-align">
-        <h3>Dashboards for PowerShell Universal Dashboard</h3>
+        <h3>Modules for PowerShell Universal Dashboard</h3>
+        <h5>The Universal Dashboard Marketplace provides a collection of dashboards and controls built for Universal Dashboard.</h5>
         <form asp-controller="Search" asp-action="Result" method="post" id="searchForm">
             <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
@@ -19,35 +20,7 @@
         @foreach (var package in Model.MostDownloadedPackages)
         {
             <div class="col s12 m4">
-                <a href="/Dashboard/@package.NuGetId">
-                    <div class="card home-component-card hoverable" style="height: 256px">
-                        <div class="card-content">
-                            <span class="heavy">@package.Title</span>
-                            <div class="row">
-                                @if (string.IsNullOrEmpty(package.IconUrl))
-                                {
-                                    <i class="material-icons large" style="color:rgba(128, 128, 128, 0.63); padding-top:17px">dashboard</i>
-                                }
-                                else
-                                {
-                                    <img src="@package.IconUrl" />
-                                }
-                            </div>
-                            <div class="row card-info valign-wrapper">
-                                <div class="col s4 offset-s2 left-align">
-                                    <span>@package.Authors</span><p />
-                                    <span>@package.Version</span><p />
-                                </div>
-                                <div class="col s4 right-align">
-                                    <div class="center-align">
-                                        <i class="material-icons">save_alt</i><p />
-                                        <span>@package.DownloadCount</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <partial name="ModuleInfoCard" model="@package" />
             </div>
         }
 
@@ -59,35 +32,7 @@
         @foreach (var package in Model.NewPackages)
         {
             <div class="col s12 m4">
-                <a href="/Dashboard/@package.NuGetId">
-                    <div class="card home-component-card hoverable" style="height: 256px">
-                        <div class="card-content">
-                            <span class="heavy">@package.Title</span>
-                            <div class="row">
-                                @if (string.IsNullOrEmpty(package.IconUrl))
-                                {
-                                    <i class="material-icons large" style="color:rgba(128, 128, 128, 0.63); padding-top:17px">dashboard</i>   
-                                }
-                                else
-                                {
-                                    <img src="@package.IconUrl" />
-                                }
-                            </div>
-                            <div class="row card-info valign-wrapper">
-                                <div class="col s4 offset-s2 left-align">
-                                    <span>@package.Authors</span><p />
-                                    <span>@package.Version</span><p />
-                                </div>
-                                <div class="col s4 right-align">
-                                    <div class="center-align">
-                                        <i class="material-icons">save_alt</i><p />
-                                        <span>@package.DownloadCount</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <partial name="ModuleInfoCard" model="@package" />
             </div>
         }
     </div>

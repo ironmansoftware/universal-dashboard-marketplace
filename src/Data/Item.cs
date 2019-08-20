@@ -22,5 +22,6 @@ namespace Marketplace.Data
         public License License { get; set; }
         public ICollection<Rating> Ratings { get; set; }
         public ICollection<TagItem> ItemTags { get; set; }
+        public ItemType Type { get; set; }
     }
 }
