@@ -19,6 +19,12 @@
     </environment>
 </head>
 <body>
+	<ul id="userDropDown" class="dropdown-content">
+		<li><a asp-area="Identity" asp-page="/Account/Logout">Logout</a></li>
+		<li><a href="#!">two</a></li>
+		<li class="divider"></li>
+		<li><a href="#!">three</a></li>
+	</ul>
     <nav>
         <div class="nav-bar nav-wrapper heading">
             <img src="~/images/navbar-logo.png" />
@@ -30,6 +36,7 @@
                 <li><a href="https://docs.universaldashboard.io" class="valign-wrapper">Docs</a></li>
                 <li><a href="https://github.com/ironmansoftware/universal-dashboard-marketplace" class="valign-wrapper">GitHub</a></li>
                 <li><a href="/publish" class="valign-wrapper">Publish</a></li>
+				<partial name="_LoginPartial" />
             </ul>
         </div>
     </nav>
@@ -40,6 +47,7 @@
         <li><a href="https://docs.universaldashboard.io">Docs</a></li>
         <li><a href="https://github.com/ironmansoftware/universal-dashboard-marketplace">GitHub</a></li>
         <li><a href="/publish">Publish</a></li>
+		<partial name="_LoginPartial" />
     </ul>
 
 
@@ -74,6 +82,7 @@
         var canTrack = consentFeature?.CanTrack == true;
     }
 
+	<environment exclude="Development">
     @if (canTrack)
     {
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -86,10 +95,14 @@
             gtag('config', 'UA-8902901-11');
         </script>
     }
+	</environment>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
+
+			var elems = document.querySelectorAll('.dropdown-trigger');
+			var instances = M.Dropdown.init(elems);
         });
     </script>
 </body>
