@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Marketplace.Areas.Identity.Data;
+using System;
 
 namespace Marketplace.Data
 {
     public class ModuleInfo
     {
         public int Id { get; set; }
-
         public string NuGetId { get; set; }
         public string Version { get; set; }
         public string ProjectUrl { get; set;  }
@@ -23,5 +23,6 @@ namespace Marketplace.Data
         public string Authors { get; set;  }
         public string Readme { get; set; }
         public ItemType Type { get; set; }
+        public MarketplaceUser SubmittedBy { get; set; }
     }
 }

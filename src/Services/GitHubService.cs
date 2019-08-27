@@ -7,7 +7,44 @@ namespace Marketplace.Services
 {
     public class GitHubService
     {
-        
+        public bool ValidateGitHubUrl(string projectUri)
+        {
+            if (Uri.TryCreate(projectUri, UriKind.Absolute, out Uri result))
+            {
+                if (!result.Host.Equals("github.com"))
+                {
+                    return false;
+                }
+
+                return result.LocalPath.Split("/").Length == 2;
+            }
+
+            return false;
+        }
+
+        public string GetAccountName(string projectUri)
+        {
+            if (Uri.TryCreate(projectUri, UriKind.Absolute, out Uri result))
+            {
+                var parts = result.LocalPath.Split("/");
+
+                return parts[0];
+            }
+
+            throw new Exception("Invalid URI");
+        }
+
+        public string GetProjectName(string projectUri)
+        {
+            if (Uri.TryCreate(projectUri, UriKind.Absolute, out Uri result))
+            {
+                var parts = result.LocalPath.Split("/");
+
+                return parts[1];
+            }
+
+            throw new Exception("Invalid URI");
+        }
 
         public string GetReadme(string projectUri)
         {

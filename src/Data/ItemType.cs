@@ -3,6 +3,7 @@
     public enum ItemType
     {
         Dashboard,
-        Control
+        Control,
+        GitHubRepo
     }
 }
