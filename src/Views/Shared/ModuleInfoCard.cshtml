@@ -18,6 +18,14 @@
                 <div class="col s4 offset-s2 left-align">
                     <span>@Model.Authors</span><p />
                     <span>@Model.Version</span><p />
+                    @if (Model.Tags.Contains("ud-licensed"))
+                    {
+                        <span style="color:dodgerblue">Enterprise</span>
+                    }
+                    else
+                    {
+                        <span style="color:green">Free</span>
+                    }
                 </div>
                 <div class="col s2 right-align">
                     <div class="center-align">

@@ -82,7 +82,16 @@
 
                 </div>
                 <div class="col s6">
-                   
+                    <span style="color: rgba(0,0,0,.5)">License</span>
+                    @if (Model.Tags.Contains("ud-licensed"))
+                    {
+                        <p><a href="https://ironmansoftware.com/powershell-universal-dashboard">Enterprise</a></p>
+                    }
+                    else
+                    {
+                        <p>Free</p>
+                    }
+
                 </div>
             </div>
         </div>
@@ -92,7 +101,6 @@
             {
                 <a href="@Model.LicenseUrl" style="color: #0039bf">License</a>
             }
-
         </div>
     </div>
 </div>
