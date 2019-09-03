@@ -37,5 +37,48 @@
         }
     </div>
 
-</div>
+    
+
+    <div class="row">
+        @{ var stats = Model.LastThirdyDaysStatistics.FirstOrDefault(); }
+        @if (stats != null)
+        {
+            <h5>Metrics</h5>
+
+            <div class="col l3 s12">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <span class="card-title">Total Modules</span>
+                        <h3>@stats.TotalModules.ToString("N0")</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col l3 s12">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <span class="card-title">Total Dashboards</span>
+                        <h3>@stats.TotalDashboards.ToString("N0")</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col l3 s12">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <span class="card-title">Total Controls</span>
+                        <h3>@stats.TotalControls.ToString("N0")</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col l3 s12">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <span class="card-title">Total Downloads</span>
+                        <h3>@stats.TotalDownloads.ToString("N0")</h3>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
 

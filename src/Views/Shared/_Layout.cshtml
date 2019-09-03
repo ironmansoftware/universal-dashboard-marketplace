@@ -20,15 +20,15 @@
     </environment>
 </head>
 <body>
-	<ul id="userDropDown" class="dropdown-content">
-		<li><a asp-area="Identity" asp-page="/Account/Logout">Logout</a></li>
-		<li><a href="#!">two</a></li>
-		<li class="divider"></li>
-		<li><a href="#!">three</a></li>
-	</ul>
+    <ul id="userDropDown" class="dropdown-content">
+        <li><a asp-area="Identity" asp-page="/Account/Logout">Logout</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
     <nav>
         <div class="nav-bar nav-wrapper heading">
-            <img src="~/images/navbar-logo.png" alt="universal-dashboard-logo"/>
+            <img src="~/images/navbar-logo.png" alt="universal-dashboard-logo" />
             <a asp-area="" asp-controller="Home" asp-action="Index" class="hide-on-med-and-down"><span>Universal Dashboard Marketplace</span></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
@@ -37,7 +37,7 @@
                 <li><a href="https://docs.universaldashboard.io" class="valign-wrapper">Docs</a></li>
                 <li><a href="https://github.com/ironmansoftware/universal-dashboard-marketplace" class="valign-wrapper">GitHub</a></li>
                 <li><a href="/publish" class="valign-wrapper">Publish</a></li>
-				<!-- <partial name="_LoginPartial" /> -->
+                <!-- <partial name="_LoginPartial" /> -->
             </ul>
         </div>
     </nav>
@@ -48,7 +48,7 @@
         <li><a href="https://docs.universaldashboard.io">Docs</a></li>
         <li><a href="https://github.com/ironmansoftware/universal-dashboard-marketplace">GitHub</a></li>
         <li><a href="/publish">Publish</a></li>
-		<!-- <partial name="_LoginPartial" /> -->
+        <!-- <partial name="_LoginPartial" /> -->
     </ul>
 
 
@@ -68,6 +68,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
     <environment include="Development">
         <script src="~/js/site.js" asp-append-version="true"></script>
@@ -83,27 +84,27 @@
         var canTrack = consentFeature?.CanTrack == true;
     }
 
-	<environment exclude="Development">
-    @if (canTrack)
-    {
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8902901-11"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
+    <environment exclude="Development">
+        @if (canTrack)
+        {
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-8902901-11"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
 
-            gtag('config', 'UA-8902901-11');
-        </script>
-    }
-	</environment>
+                gtag('config', 'UA-8902901-11');
+            </script>
+        }
+    </environment>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
 
-			var elems = document.querySelectorAll('.dropdown-trigger');
-			var instances = M.Dropdown.init(elems);
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems);
         });
     </script>
 </body>

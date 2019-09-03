@@ -70,7 +70,22 @@ namespace Marketplace.Services
                     }
                 }
 
+                var stats = applicationDbContext.Statistics.OrderByDescending(m => m.Timestamp).FirstOrDefault();
+                if (stats == null || stats.Timestamp < DateTime.UtcNow.AddHours(-24))
+                {
+                    stats = new Statistics();
+                    stats.Timestamp = DateTime.UtcNow;
+                    stats.TotalModules = applicationDbContext.ModuleInfo.Count();
+                    stats.TotalControls = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Control);
+                    stats.TotalDashboards = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Dashboard);
+                    stats.TotalDownloads = applicationDbContext.ModuleInfo.Sum(m => m.DownloadCount) ?? 0;
+
+                    applicationDbContext.Statistics.Add(stats);
+                }
+
                 applicationDbContext.SaveChanges();
+
+
             }
 
 

@@ -21,6 +21,7 @@ namespace Marketplace.Controllers
             {
                 NewPackages = _dbContext.ModuleInfo.OrderByDescending(m => m.Published).Take(6),
                 MostDownloadedPackages = _dbContext.ModuleInfo.OrderByDescending(m => m.DownloadCount).Take(6),
+                LastThirdyDaysStatistics = _dbContext.Statistics.OrderByDescending(m => m.Timestamp).Take(30)
             };
 
             return View(homeViewModel);

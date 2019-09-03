@@ -27,7 +27,7 @@ namespace Marketplace.Data
         public DbSet<UniversalDashboardVersion> UniversalDashboardVersions { get; set; }
         public DbSet<DatabaseVersion> DatabaseVersions { get; set; }
         public DbSet<ModuleInfo> ModuleInfo { get; set; }
-
+        public DbSet<Statistics> Statistics { get; set; }
         public void EnsureSeedData()
         {
             if (!DatabaseVersions.Any())

@@ -7,5 +7,6 @@ namespace Marketplace.Models
     {
         public IEnumerable<ModuleInfo> NewPackages { get; set; }
         public IEnumerable<ModuleInfo> MostDownloadedPackages { get; set; }
+        public IEnumerable<Statistics> LastThirdyDaysStatistics { get; set; }
     }
 }
