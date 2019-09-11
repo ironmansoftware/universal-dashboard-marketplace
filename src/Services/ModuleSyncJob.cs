@@ -65,6 +65,7 @@ namespace Marketplace.Services
                         existingPackage.Description = metadata.Description;
                         existingPackage.Authors = metadata.Authors;
                         existingPackage.Readme = gitHubService.GetReadme(package.ProjectUrl);
+                        existingPackage.Type = metadata.Type;
 
                         applicationDbContext.ModuleInfo.Update(existingPackage);
                     }
