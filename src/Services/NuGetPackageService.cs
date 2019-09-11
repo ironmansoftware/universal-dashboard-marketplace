@@ -21,7 +21,17 @@ namespace Marketplace.Services
 
         public async Task<IEnumerable<ModuleInfo>> GetDashboards()
         {
-            return await GetUniversalDashboardPackages("ud-dashboard", ItemType.Dashboard);
+            var packages = await GetUniversalDashboardPackages("ud-dashboard", ItemType.Dashboard);
+
+            foreach(var package in packages)
+            {
+                if (package.Tags.Contains("ud-component"))
+                {
+                    package.Type = ItemType.Control;
+                }
+            }
+
+            return packages;
         }
 
         public async Task<IEnumerable<ModuleInfo>> GetControls()
