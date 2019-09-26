@@ -4,6 +4,7 @@
     {
         Dashboard,
         Control,
-        GitHubRepo
+        GitHubRepo,
+        Tool
     }
 }

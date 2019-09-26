@@ -40,10 +40,15 @@
                             <i class="material-icons">bar_chart</i><p />
                             <span>Dashboard</span>
                         }
-                        else
+                        else if (Model.Type == Marketplace.Data.ItemType.Control)
                         {
                             <i class="material-icons">extension</i><p />
                             <span>Control</span>
+                        }
+						else if (Model.Type == Marketplace.Data.ItemType.Tool)
+                        {
+                            <i class="material-icons">build</i><p />
+                            <span>Tool</span>
                         }
                     </div>
                 </div>

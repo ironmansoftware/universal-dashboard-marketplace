@@ -75,9 +75,13 @@
                     {
                         <p><i class="material-icons">dashboard</i> Dashboard</p>
                     }
-                    else
+                    else if (Model.Type == Marketplace.Data.ItemType.Control)
                     {
                         <p><i class="material-icons">extension</i> Control</p>
+                    }
+					else if (Model.Type == Marketplace.Data.ItemType.Tool)
+                    {
+                        <p><i class="material-icons">build</i> Tool</p>
                     }
 
                 </div>
