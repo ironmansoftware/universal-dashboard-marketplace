@@ -10,6 +10,7 @@ namespace Marketplace.Data
         public long Id { get; set; }
         public DateTime Timestamp { get; set; }
         public long TotalModules { get; set; }
+        public long TotalTools { get; set; }
         public long TotalControls { get; set; }
         public long TotalDashboards { get; set; }
         public long TotalDownloads { get; set; }

@@ -78,6 +78,7 @@ namespace Marketplace.Services
                     stats.Timestamp = DateTime.UtcNow;
                     stats.TotalModules = applicationDbContext.ModuleInfo.Count();
                     stats.TotalControls = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Control);
+                    stats.TotalTools = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Tool);
                     stats.TotalDashboards = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Dashboard);
                     stats.TotalDownloads = applicationDbContext.ModuleInfo.Sum(m => m.DownloadCount) ?? 0;
 

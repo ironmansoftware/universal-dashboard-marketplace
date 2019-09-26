@@ -45,7 +45,7 @@
         {
             <h5>Metrics</h5>
 
-            <div class="col l3 s12">
+            <div class="col l2 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Total Modules</span>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="col l3 s12">
+            <div class="col l2 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Total Dashboards</span>
@@ -74,7 +74,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col l3 s12">
+
+            <div class="col l2 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Total Controls</span>
@@ -91,7 +92,26 @@
                     </div>
                 </div>
             </div>
-            <div class="col l3 s12">
+
+			<div class="col l2 s12">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <span class="card-title">Total Tools</span>
+                        <h3>@stats.TotalTools.ToString("N0")</h3>
+                    </div>
+                    <div class="card-action">
+                        @{
+                            var paramTool = new Dictionary<string, string>
+                            {
+                                { "type", "Tool" }
+                            };
+                        }
+                        <a asp-controller="Browse" asp-action="Index" asp-all-route-data="paramTool">Browse</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col l4 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Total Downloads</span>
