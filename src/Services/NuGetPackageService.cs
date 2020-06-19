@@ -17,6 +17,7 @@ namespace Marketplace.Services
         {
             var packages = await GetDashboards();
             packages = packages.Concat(await GetTools());
+            packages = packages.Concat(await GetComponents());
             return packages.Concat(await GetControls());
         }
 
@@ -39,6 +40,12 @@ namespace Marketplace.Services
         {
             return await GetUniversalDashboardPackages("ud-control", ItemType.Control);
         }
+
+        public async Task<IEnumerable<ModuleInfo>> GetComponents()
+        {
+            return await GetUniversalDashboardPackages("ud-component", ItemType.Control);
+        }
+
 
         public async Task<IEnumerable<ModuleInfo>> GetTools()
         {
