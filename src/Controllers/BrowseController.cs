@@ -2,9 +2,7 @@
 using Marketplace.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Marketplace.Controllers
 {
@@ -17,7 +15,7 @@ namespace Marketplace.Controllers
             _dbContext = dbContext;
         }
 
-        public IActionResult Index([FromQuery]int page = 1, [FromQuery]string type = "any", [FromQuery]string orderBy = "downloads")
+        private BrowseViewModel GetResults(int page = 1, string type = "any", string orderBy = "downloads")
         {
             const int pageSize = 9;
 
@@ -49,7 +47,7 @@ namespace Marketplace.Controllers
 
             var items = query.Skip((page - 1) * pageSize).Take(pageSize);
 
-            return View(new BrowseViewModel
+            return new BrowseViewModel
             {
                 TotalPages = total / pageSize,
                 TotalItems = total,
@@ -57,7 +55,18 @@ namespace Marketplace.Controllers
                 Modules = items,
                 Type = type, 
                 OrderBy = orderBy
-            });
+            };
+        }
+
+        public IActionResult Index([FromQuery]int page = 1, [FromQuery]string type = "any", [FromQuery]string orderBy = "downloads")
+        {            
+            return View(GetResults(page, type, orderBy));
+        }
+
+        [Route("/api/module")]
+        public IActionResult JsonResult([FromQuery]int page = 1, [FromQuery]string type = "any", [FromQuery]string orderBy = "downloads")
+        {            
+            return Json(GetResults(page, type, orderBy));
         }
     }
 }
