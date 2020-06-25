@@ -22,5 +22,15 @@ namespace Marketplace.Controllers
 
             return View(item);
         }
+
+        [HttpGet("/api/module/{nugetId}")]
+        public IActionResult Json([FromRoute]string nugetId)
+        {
+            var item = applicationDbContext.ModuleInfo.FirstOrDefault(m => m.NuGetId == nugetId);
+
+            if (item == null) return NotFound();
+
+            return Json(item);
+        }
     }
 }
