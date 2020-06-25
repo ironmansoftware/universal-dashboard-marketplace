@@ -17,14 +17,23 @@ namespace Marketplace.Controllers
 
         public IActionResult Index()
         {
-            var homeViewModel = new HomeViewModel
+            return View(GetResults());
+        }
+
+        [Route("/api/overview")]
+        public IActionResult Json()
+        {
+            return Json(GetResults());
+        }
+
+        private HomeViewModel GetResults()
+        {
+            return new HomeViewModel
             {
                 NewPackages = _dbContext.ModuleInfo.OrderByDescending(m => m.Published).Take(6),
                 MostDownloadedPackages = _dbContext.ModuleInfo.OrderByDescending(m => m.DownloadCount).Take(6),
                 LastThirdyDaysStatistics = _dbContext.Statistics.OrderByDescending(m => m.Timestamp).Take(30)
             };
-
-            return View(homeViewModel);
         }
 
         public IActionResult About()
