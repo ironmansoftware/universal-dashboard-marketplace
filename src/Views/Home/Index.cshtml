@@ -3,8 +3,8 @@
 <div class="container">
     
     <div class="center-align">
-        <h3>Modules for PowerShell Universal Dashboard</h3>
-        <h5>The Universal Dashboard Marketplace provides a collection of dashboards and controls built for Universal Dashboard.</h5>
+        <h3>Modules for PowerShell Universal</h3>
+        <h5>The PowerShell Universal Marketplace provides a collection of components built for PSU.</h5>
         <form asp-controller="Search" asp-action="Result" method="post" id="searchForm">
             <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
@@ -45,7 +45,7 @@
         {
             <h5>Metrics</h5>
 
-            <div class="col l2 s12">
+            <div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Modules</span>
@@ -57,25 +57,7 @@
                 </div>
             </div>
 
-            <div class="col l2 s12">
-                <div class="card">
-                    <div class="card-content center-align">
-                        <span class="card-title">Dashboards</span>
-                        <h3>@stats.TotalDashboards.ToString("N0")</h3>
-                    </div>
-                    <div class="card-action">
-                        @{
-                            var parmsDashboards = new Dictionary<string, string>
-                            {
-                                { "type", "Dashboard" }
-                            };
-                        }
-                        <a asp-controller="Browse" asp-action="Index" asp-all-route-data="parmsDashboards">Browse</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col l2 s12">
+            <div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Controls</span>
@@ -93,7 +75,7 @@
                 </div>
             </div>
 
-			<div class="col l2 s12">
+			<div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Tools</span>
@@ -111,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="col l4 s12">
+            <div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
                         <span class="card-title">Total Downloads</span>
