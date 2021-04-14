@@ -5,6 +5,7 @@
         Dashboard,
         Control,
         GitHubRepo,
-        Tool
+        Tool,
+        PSCommander
     }
 }

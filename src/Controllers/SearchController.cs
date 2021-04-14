@@ -14,13 +14,19 @@ namespace Marketplace.Controllers
             _dbContext = dbContext;
         }
 
-        private SearchViewModel GetResults(string searchText, int page)
+        private SearchViewModel GetResults(string searchText, int page, bool includePSCommander)
         {
             const int pageSize = 9;
             var text = searchText;
 
-            var total = _dbContext.ModuleInfo.Where(m => m.Title.Contains(text) || m.Readme.Contains(text) || m.Description.Contains(text) || m.Tags.Contains(text) || m.Authors.Contains(text)).Count();
-            var items = _dbContext.ModuleInfo.Where(m => m.Title.Contains(text) || m.Readme.Contains(text) || m.Description.Contains(text) || m.Tags.Contains(text) || m.Authors.Contains(text)).OrderByDescending(m => m.DownloadCount); //.Skip(page * pageSize).Take(pageSize);
+            var query = _dbContext.ModuleInfo.Where(m => m.Title.Contains(text) || m.Readme.Contains(text) || m.Description.Contains(text) || m.Tags.Contains(text) || m.Authors.Contains(text));
+            if (!includePSCommander)
+            {
+                query = query.Where(m => m.Type != ItemType.PSCommander);
+            }
+
+            var total = query.Count();
+            var items = query.OrderByDescending(m => m.DownloadCount); //.Skip(page * pageSize).Take(pageSize);
 
             return new SearchViewModel
             {
@@ -35,13 +41,13 @@ namespace Marketplace.Controllers
         [HttpPost("/api/search")]
         public IActionResult JsonResult([FromForm]string searchText, [FromQuery]int page)
         {
-            return Json(GetResults(searchText, page));
+            return Json(GetResults(searchText, page, false));
         }
 
         [HttpPost("/search/result")]
         public IActionResult Result([FromForm]string searchText, [FromQuery]int page)
         {
-            return View(GetResults(searchText, page));
+            return View(GetResults(searchText, page, true));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Marketplace.Controllers
             _dbContext = dbContext;
         }
 
-        private BrowseViewModel GetResults(int page = 1, string type = "any", string orderBy = "downloads")
+        private BrowseViewModel GetResults(bool includePSCommander, int page = 1, string type = "any", string orderBy = "downloads")
         {
             const int pageSize = 9;
 
@@ -28,6 +28,11 @@ namespace Marketplace.Controllers
             if (Enum.TryParse(type, out ItemType itemType))
             {
                 query = query.Where(m => m.Type == itemType);
+            }
+
+            if (!includePSCommander)
+            {
+                query = query.Where(m => m.Type != ItemType.PSCommander);
             }
 
             var total = query.Count();
@@ -60,13 +65,13 @@ namespace Marketplace.Controllers
 
         public IActionResult Index([FromQuery]int page = 1, [FromQuery]string type = "any", [FromQuery]string orderBy = "downloads")
         {            
-            return View(GetResults(page, type, orderBy));
+            return View(GetResults(true, page, type, orderBy));
         }
 
         [Route("/api/module")]
         public IActionResult JsonResult([FromQuery]int page = 1, [FromQuery]string type = "any", [FromQuery]string orderBy = "downloads")
         {            
-            return Json(GetResults(page, type, orderBy));
+            return Json(GetResults(false, page, type, orderBy));
         }
     }
 }

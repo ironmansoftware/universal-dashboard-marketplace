@@ -80,6 +80,7 @@ namespace Marketplace.Services
                     stats.TotalControls = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Control);
                     stats.TotalTools = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Tool);
                     stats.TotalDashboards = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.Dashboard);
+                    stats.TotalPsCommanderModules = applicationDbContext.ModuleInfo.Count(m => m.Type == ItemType.PSCommander);
                     stats.TotalDownloads = applicationDbContext.ModuleInfo.Sum(m => m.DownloadCount) ?? 0;
 
                     applicationDbContext.Statistics.Add(stats);

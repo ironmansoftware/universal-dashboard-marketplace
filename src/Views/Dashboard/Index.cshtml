@@ -55,7 +55,7 @@
                 </div>
                 <div class="col s6">
                     <span style="color: rgba(0,0,0,.5)">Last Updated</span>
-                    <p>@Model.Published</p>
+                    <p>@Model.Published.Value.ToString("D")</p>
                 </div>
             </div>
             <div class="row">
@@ -73,27 +73,17 @@
                     <span style="color: rgba(0,0,0,.5)">Type</span>
                     @if (Model.Type == Marketplace.Data.ItemType.Dashboard)
                     {
-                        <p><i class="material-icons">dashboard</i> Dashboard</p>
+                        <a href="https://ironmansoftware.com/powershell-universal"><p><i class="material-icons">dashboard</i> Dashboard</p></a>
                     }
                     else if (Model.Type == Marketplace.Data.ItemType.Control)
                     {
-                        <p><i class="material-icons">extension</i> Control</p>
+                        <a href="https://ironmansoftware.com/powershell-universal"><p><i class="material-icons">dashboard</i> Component</p></a>
                     }
-					else if (Model.Type == Marketplace.Data.ItemType.Tool)
+					else if (Model.Type == Marketplace.Data.ItemType.PSCommander)
                     {
-                        <p><i class="material-icons">build</i> Tool</p>
-                    }
-
-                </div>
-                <div class="col s6">
-                    <span style="color: rgba(0,0,0,.5)">License</span>
-                    @if (Model.Tags.Contains("ud-licensed"))
-                    {
-                        <p><a href="https://ironmansoftware.com/powershell-universal-dashboard">Premium</a></p>
-                    }
-                    else
-                    {
-                        <p>Free</p>
+                        <a href="https://ironmansoftware.com/powershell-pro-tools">
+                            <p><i class="material-icons">build</i> PSCommander</p>
+                        </a>
                     }
 
                 </div>

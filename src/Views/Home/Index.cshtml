@@ -3,8 +3,8 @@
 <div class="container">
     
     <div class="center-align">
-        <h3>Modules for PowerShell Universal</h3>
-        <h5>The PowerShell Universal Marketplace provides a collection of components built for PSU.</h5>
+        <h3>Extensions for Ironman Software products</h3>
+        <h5>Install extensions for PowerShell Universal and PSCommander</h5>
         <form asp-controller="Search" asp-action="Result" method="post" id="searchForm">
             <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
@@ -48,7 +48,7 @@
             <div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
-                        <span class="card-title">Modules</span>
+                        <span class="card-title">Total Modules</span>
                         <h3>@stats.TotalModules.ToString("N0")</h3>
                     </div>
                     <div class="card-action">
@@ -60,7 +60,7 @@
             <div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
-                        <span class="card-title">Controls</span>
+                        <span class="card-title">PowerShell Universal Modules</span>
                         <h3>@stats.TotalControls.ToString("N0")</h3>
                     </div>
                     <div class="card-action">
@@ -78,7 +78,7 @@
 			<div class="col l3 s12">
                 <div class="card">
                     <div class="card-content center-align">
-                        <span class="card-title">Tools</span>
+                        <span class="card-title">PSCommander Modules</span>
                         <h3>@stats.TotalTools.ToString("N0")</h3>
                     </div>
                     <div class="card-action">

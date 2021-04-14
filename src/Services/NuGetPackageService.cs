@@ -18,7 +18,20 @@ namespace Marketplace.Services
             var packages = await GetDashboards();
             packages = packages.Concat(await GetTools());
             packages = packages.Concat(await GetComponents());
+            packages = packages.Concat(await GetPSCommanderModules());
             return packages.Concat(await GetControls());
+        }
+
+        public async Task<IEnumerable<ModuleInfo>> GetPSCommanderModules()
+        {
+            var packages = await GetUniversalDashboardPackages("pscommander", ItemType.Dashboard);
+
+            foreach(var package in packages)
+            {
+                package.Type = ItemType.PSCommander;
+            }
+
+            return packages.Where(m => m.Title != "PSCommander");
         }
 
         public async Task<IEnumerable<ModuleInfo>> GetDashboards()

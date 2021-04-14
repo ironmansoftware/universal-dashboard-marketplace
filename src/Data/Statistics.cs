@@ -14,5 +14,6 @@ namespace Marketplace.Data
         public long TotalControls { get; set; }
         public long TotalDashboards { get; set; }
         public long TotalDownloads { get; set; }
+        public long TotalPsCommanderModules { get; set; }
     }
 }
