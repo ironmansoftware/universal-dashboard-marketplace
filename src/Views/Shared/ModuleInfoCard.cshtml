@@ -15,18 +15,6 @@
                 }
             </div>
             <div class="row card-info valign-wrapper">
-                <div class="col s4 offset-s2 left-align">
-                    <span>@Model.Authors</span><p />
-                    <span>@Model.Version</span><p />
-                    @if (Model.Tags.Contains("ud-licensed"))
-                    {
-                        <span style="color:dodgerblue">Premium</span>
-                    }
-                    else
-                    {
-                        <span style="color:green">Free</span>
-                    }
-                </div>
                 <div class="col s2 right-align">
                     <div class="center-align">
                         <i class="material-icons">save_alt</i><p />
@@ -49,6 +37,11 @@
                         {
                             <i class="material-icons">build</i><p />
                             <span>Tool</span>
+                        }
+                        else if (Model.Type == Marketplace.Data.ItemType.PSCommander)
+                        {
+                            <i class="material-icons">build</i><p />
+                            <span>PSCommander</span>
                         }
                     </div>
                 </div>
