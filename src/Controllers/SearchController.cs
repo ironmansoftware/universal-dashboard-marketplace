@@ -19,7 +19,7 @@ namespace Marketplace.Controllers
             const int pageSize = 10;
             var text = searchText;
 
-            var query = searchText = "*" ? _dbContext.ModuleInfo : _dbContext.ModuleInfo.Where(m => m.Title.Contains(text) || m.Readme.Contains(text) || m.Description.Contains(text) || m.Tags.Contains(text) || m.Authors.Contains(text));
+            var query = searchText == "*" ? _dbContext.ModuleInfo : _dbContext.ModuleInfo.Where(m => m.Title.Contains(text) || m.Readme.Contains(text) || m.Description.Contains(text) || m.Tags.Contains(text) || m.Authors.Contains(text));
             if (!includePSCommander)
             {
                 query = query.Where(m => m.Type != ItemType.PSCommander);

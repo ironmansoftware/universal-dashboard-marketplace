@@ -19,8 +19,4 @@
     <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="wwwroot\.well-known\pki-validation\godaddy.html" CopyToPublishDirectory="PreserveNewest" />
-  </ItemGroup>
-
 </Project>
